@@ -124,8 +124,8 @@ RUN wget http://varnish-cache.org/downloads/varnish-6.4.0.tgz \
    pcre-dev \
 && cd /varnish-6.4.0 && sh autogen.sh \
 && sh configure --with-unwind \
-&& make -j $(( $(nproc) - 1 )) \
-&& make install -j $(( $(nproc) - 1 )) \
+&& make -j "$(nproc)" \
+&& make install -j "$(nproc)" \
 && cd / && mkdir /etc/varnish
 
 COPY redis.conf /etc/redis.conf
