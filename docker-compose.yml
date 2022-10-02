@@ -1,0 +1,30 @@
+version: '2'
+services:
+  magento:
+    image: ${Image_Name}
+    container_name: ${Container_Name}
+    restart: always
+    ports:
+      - "80:80"
+      - "6379:6379"
+      - "9200:9200"
+    tty: true
+    volumes:
+      - ./volumes/code/:/var/www/html
+      - ./volumes/logs/nginx.logs:/var/log/nginx
+      - ./volumes/logs/php7.logs:/var/log/php7
+      - ./volumes/database/:/var/lib
+      - ./volumes/composer_cache:/root/.composer/cache
+      - ./volumes/esdata:/usr/share/elasticsearch/data
+      - ./volumes/logs/elasticsearch.logs:/usr/share/elasticsearch/logs
+    networks:
+      magento_compose:
+       ipv4_address: 172.21.0.5
+networks:
+  magento_compose:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.1/24
+          gateway: 172.21.0.1
+
