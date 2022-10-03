@@ -135,7 +135,7 @@ COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY php.ini /etc/php7/php.ini
 COPY www.conf /etc/php7/php-fpm.d/
-copy default.vcl /etc/varnish/
+COPY default.vcl /etc/varnish/
 COPY script.sh /
 COPY startup.sh /startup.sh
 
