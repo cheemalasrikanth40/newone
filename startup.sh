@@ -93,7 +93,7 @@ if (( $(ps aux | grep 'nginx' | awk '{print $2}' | wc -l) > 0 ))
 then
 echo -e "\rnginx is already running"
 else
-mkdir -p /var/log/nginx /var/tmp/nginx /var/lib/nginx /var/lib/nginx/tmp /var/lib/nginx/logs
+mkdir -p /var/log/nginx /var/tmp/nginx /var/lib/nginx /var/lib/nginx/tmp /var/lib/nginx/logs /var/www/html
 /usr/sbin/nginx -g 'daemon off;' &
 echo -e "\rnginx has started"
 fi
